@@ -1,5 +1,16 @@
-const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
+// const mongodb = require('mongodb')
+// const MongoClient = mongodb.MongoClient
+// const ObjectID = mongodb.ObjectID
+
+const {
+    MongoClient,
+    ObjectID
+} = require('mongodb')
+
+const id = new ObjectID()
+console.log(id)
+console.log(id.getTimestamp())
+
 // local mongodb
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
@@ -18,8 +29,8 @@ MongoClient.connect(connectionURL, {
     const db = client.db(databaseName)
 
     // db.collection('users').insertOne({
-    //     name: 'Piotr',
-    //     age: 39
+    //     name: 'Vikram',
+    //     age: 62
     // }, (error, result) => {
     //     if (error) {
     //         return console.log('Unable to insert user')
@@ -39,19 +50,19 @@ MongoClient.connect(connectionURL, {
     //     }
     //     console.log(result.ops)
     // })
-    db.collection('tasks').insertMany([{
-        description: 'Buy new tv',
-        completed: false
-    }, {
-        description: 'Buy new iPhone',
-        completed: false
-    }, {
-        description: 'Buy new shoes',
-        completed: true
-    }], (error, result) => {
-        if (error) {
-            return console.log('Unable to insert many tasks !')
-        }
-        console.log(result.ops)
-    })
+    // db.collection('tasks').insertMany([{
+    //     description: 'Buy new tv',
+    //     completed: false
+    // }, {
+    //     description: 'Buy new iPhone',
+    //     completed: false
+    // }, {
+    //     description: 'Buy new shoes',
+    //     completed: true
+    // }], (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert many tasks !')
+    //     }
+    //     console.log(result.ops)
+    // })
 })
