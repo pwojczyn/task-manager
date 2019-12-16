@@ -21,29 +21,12 @@ MongoClient.connect(
     const db = client.db(databaseName);
 
     db.collection("users")
-      .updateOne(
-        {
-          _id: new ObjectID("5df26cb918c66e5fabaac95e")
-        },
-        {
-          $set: {
-            name: "Adamek"
-          }
-        }
-      )
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    db.collection("tasks")
-      .updateMany({ completed: false }, { $set: { completed: true } })
+      .deleteOne({ nme: "Piotr" })
       .then(() => {
-        console.log("Done !");
+        console.log("Deleted one !");
       })
       .catch(() => {
-        console.log("Error updatemany");
+        console.log("Error during deleting !");
       });
   }
 );
